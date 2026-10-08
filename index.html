@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#07111d" />
+  <meta name="description" content="Portfolio técnico de Sergio Jiménez Macías: software engineering, systems & platform engineering, distributed data, cybersecurity, parallel computing y networking." />
+  <meta property="og:title" content="Sergio Jiménez Macías · Computer Engineering Portfolio" />
+  <meta property="og:description" content="Software engineering, systems & platform engineering, distributed data, cybersecurity, parallel computing and networking." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seergiojm23.github.io/" />
+  <meta property="og:image" content="https://seergiojm23.github.io/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <title>Sergio Jiménez Macías · Engineering Portfolio</title>
+  <style>
+    :root{
+      --bg:#06101a;
+      --bg-2:#081522;
+      --surface:#0b1826;
+      --surface-2:#0f2032;
+      --surface-3:#13283d;
+      --glass:rgba(12,26,41,.76);
+      --text:#eff6ff;
+      --text-2:#c5d2df;
+      --muted:#8498ab;
+      --line:rgba(143,172,198,.15);
+      --line-2:rgba(143,172,198,.26);
+      --accent:#63d9ff;
+      --accent-2:#7f8cff;
+      --accent-3:#79f0c2;
+      --warning:#f7c873;
+      --danger:#ff8d8d;
+      --shadow:0 24px 80px rgba(0,0,0,.34);
+      --radius:22px;
+      --radius-sm:14px;
+      --max:1220px;
+      --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+      --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    [data-theme="light"]{
+      --bg:#eef4f9;
+      --bg-2:#f7fafc;
+      --surface:#ffffff;
+      --surface-2:#f4f8fb;
+      --surface-3:#eaf2f7;
+      --glass:rgba(255,255,255,.82);
+      --text:#0a1826;
+      --text-2:#30465a;
+      --muted:#607588;
+      --line:rgba(30,70,104,.12);
+      --line-2:rgba(30,70,104,.22);
+      --accent:#027fac;
+      --accent-2:#5363e8;
+      --accent-3:#0f9c72;
+      --shadow:0 24px 70px rgba(45,77,104,.14);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    button{color:inherit}
+    ::selection{background:rgba(99,217,255,.26)}
+    .skip{position:fixed;left:12px;top:-50px;z-index:200;padding:9px 12px;border-radius:10px;background:var(--text);color:var(--bg);font-weight:800}.skip:focus{top:12px}
+    .shell{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .section{position:relative;padding:112px 0}
+    .section.compact{padding:72px 0}
+    .section::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(99,217,255,.015),transparent)}
+    .blueprint{position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(124,160,190,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(124,160,190,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.65) 60%,transparent 100%)}
+    .aurora{position:fixed;z-index:-4;pointer-events:none;filter:blur(110px);border-radius:50%;opacity:.18;animation:drift 20s ease-in-out infinite alternate}.aurora.a{width:520px;height:520px;left:-160px;top:-120px;background:#1479b9}.aurora.b{width:460px;height:460px;right:-180px;top:18%;background:#5963d7;animation-delay:-6s}.aurora.c{width:380px;height:380px;left:25%;bottom:-140px;background:#0c8f79;animation-delay:-11s}@keyframes drift{to{transform:translate3d(7vw,4vh,0) scale(1.12)}}
+    .noise{position:fixed;inset:0;z-index:-2;opacity:.045;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E")}
+    .top-signal{height:2px;position:fixed;inset:0 0 auto;z-index:110;background:linear-gradient(90deg,transparent,rgba(99,217,255,.22),transparent);overflow:hidden}.top-signal::after{content:"";position:absolute;top:0;width:18%;height:100%;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:signal 4.8s linear infinite}@keyframes signal{from{left:-18%}to{left:100%}}
+
+    /* navigation */
+    .nav-wrap{position:sticky;top:0;z-index:100;padding:14px 0 0;pointer-events:none}
+    .nav{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 12px 10px 16px;border:1px solid var(--line);background:color-mix(in srgb,var(--glass) 92%,transparent);backdrop-filter:blur(18px);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.14)}
+    .brand{display:flex;align-items:center;gap:11px;min-width:max-content}.mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--line-2);border-radius:11px;background:linear-gradient(145deg,rgba(99,217,255,.16),rgba(127,140,255,.08));font:800 .78rem var(--mono);letter-spacing:.06em}.brand-copy{line-height:1.05}.brand-copy b{display:block;font-size:.82rem}.brand-copy span{display:block;margin-top:5px;color:var(--muted);font:600 .56rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:4px}.nav-links a{padding:9px 10px;color:var(--muted);font-size:.76rem;font-weight:750;border-radius:10px;transition:.2s}.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.045)}
+    .nav-actions{display:flex;align-items:center;gap:7px}.icon-btn,.small-btn{border:1px solid var(--line);background:var(--surface-2);border-radius:11px;cursor:pointer;transition:.2s}.icon-btn{width:38px;height:38px;display:grid;place-items:center}.icon-btn:hover,.small-btn:hover{border-color:var(--line-2);transform:translateY(-1px)}.small-btn{padding:9px 13px;font-size:.72rem;font-weight:800}.small-btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .menu-btn{display:none}
+
+    /* common typography */
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font:750 .67rem var(--mono);letter-spacing:.12em;text-transform:uppercase}.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+    .section-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:end;gap:56px;margin-bottom:42px}.section-head h2{margin:12px 0 0;font-size:clamp(2.15rem,4.5vw,4.4rem);line-height:.98;letter-spacing:-.055em}.section-head p{margin:0;color:var(--text-2);font-size:1rem;max-width:680px}.section-head strong{color:var(--text)}
+    .kicker{color:var(--muted);font:650 .65rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+    .panel{border:1px solid var(--line);background:linear-gradient(180deg,color-mix(in srgb,var(--surface) 97%,white 3%),var(--surface));border-radius:var(--radius);box-shadow:0 1px 0 rgba(255,255,255,.025) inset;position:relative;overflow:hidden}.panel::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(130deg,rgba(255,255,255,.025),transparent 30%,transparent 70%,rgba(99,217,255,.018))}
+    .tag{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;color:var(--text-2);background:rgba(255,255,255,.025);font:650 .62rem var(--mono)}.tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+    .muted{color:var(--muted)}
+
+    /* hero */
+    .hero{padding:106px 0 84px;min-height:calc(100vh - 70px);display:flex;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(440px,.98fr);gap:72px;align-items:center}
+    .hero-copyblock{position:relative}.availability{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid rgba(121,240,194,.21);border-radius:999px;background:rgba(121,240,194,.055);color:#9ff6d5;font:700 .64rem var(--mono);text-transform:uppercase;letter-spacing:.08em}.availability i{width:7px;height:7px;background:var(--accent-3);border-radius:50%;box-shadow:0 0 0 5px rgba(121,240,194,.08),0 0 18px rgba(121,240,194,.65);animation:pulse 2s ease-in-out infinite}@keyframes pulse{50%{opacity:.55;transform:scale(.84)}}
+     .hero h1{margin:24px 0 22px;font-size:clamp(4rem,8.6vw,7.6rem);line-height:.86;letter-spacing:-.072em;font-weight:860;max-width:920px}.hero h1 span{display:block;color:var(--text-2);font-weight:720;letter-spacing:-.065em}
+     .hero-role{max-width:820px;margin:0 0 18px;font-size:clamp(1.18rem,1.8vw,1.62rem);line-height:1.32;letter-spacing:-.022em;font-weight:720;color:var(--text-2)}.hero-role em{font-style:normal;color:var(--text)}
+    .hero-desc{max-width:720px;color:var(--text-2);font-size:1rem}.hero-desc strong{color:var(--text);font-weight:760}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 15px;border:1px solid var(--line-2);border-radius:12px;background:var(--surface-2);font-size:.77rem;font-weight:800;transition:.22s}.btn:hover{transform:translateY(-2px);border-color:rgba(99,217,255,.45);box-shadow:0 12px 34px rgba(0,0,0,.18)}.btn.primary{background:var(--text);border-color:var(--text);color:var(--bg)}.btn.ghost{background:transparent}.btn svg{width:15px;height:15px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:9px 18px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}.hero-meta span{display:flex;align-items:center;gap:7px;color:var(--muted);font:650 .66rem var(--mono)}.hero-meta b{color:var(--text-2);font-weight:720}.hero-meta i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+    .hero-visual{min-height:610px;padding:16px}.visual-frame{height:100%;min-height:576px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(12,30,47,.82),rgba(7,18,30,.92));position:relative;overflow:hidden}.visual-frame::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 66% 28%,rgba(99,217,255,.10),transparent 22%),radial-gradient(circle at 32% 70%,rgba(127,140,255,.08),transparent 24%);pointer-events:none}.visual-top{position:absolute;left:18px;right:18px;top:15px;z-index:4;display:flex;justify-content:space-between;align-items:center;color:#8ba0b4;font:650 .57rem var(--mono);text-transform:uppercase;letter-spacing:.09em}.visual-top .live{display:flex;align-items:center;gap:7px}.visual-top .live i{width:6px;height:6px;border-radius:50%;background:#7df0c3;box-shadow:0 0 12px #7df0c3}
+    .topology{position:absolute;inset:54px 12px 112px}.topology svg{width:100%;height:100%;display:block}.topology path.base{stroke:rgba(141,178,205,.16);stroke-width:1.1;fill:none}.topology path.flow{stroke:url(#flowGradient);stroke-width:1.3;fill:none;stroke-dasharray:6 9;animation:dash 9s linear infinite}@keyframes dash{to{stroke-dashoffset:-150}}
+    .topology .packet{filter:drop-shadow(0 0 7px rgba(99,217,255,.95))}.node{position:absolute;z-index:5;min-width:104px;padding:10px 11px;border:1px solid rgba(151,183,207,.19);border-radius:11px;background:rgba(10,25,40,.86);backdrop-filter:blur(10px);box-shadow:0 10px 28px rgba(0,0,0,.18);transform:translate(-50%,-50%)}.node b{display:block;font:740 .68rem var(--mono);color:#e9f6ff}.node small{display:block;margin-top:4px;color:#7890a6;font:600 .52rem var(--mono)}.node::before{content:"";position:absolute;left:9px;top:-4px;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(99,217,255,.75)}
+    .n1{left:20%;top:24%}.n2{left:49%;top:17%}.n3{left:77%;top:30%}.n4{left:27%;top:58%}.n5{left:59%;top:53%}.n6{left:80%;top:71%}.n7{left:43%;top:82%}.n8{left:13%;top:83%}
+    .visual-bottom{position:absolute;left:16px;right:16px;bottom:16px;z-index:7;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.live-stat{padding:11px;border:1px solid var(--line);border-radius:11px;background:rgba(7,18,30,.8);backdrop-filter:blur(10px)}.live-stat span{display:block;color:#7f94a7;font:600 .53rem var(--mono);text-transform:uppercase;letter-spacing:.06em}.live-stat strong{display:block;margin-top:5px;font-size:.92rem;color:#edf7ff}.live-stat small{display:block;margin-top:2px;color:#647b8f;font-size:.52rem}
+    .scan{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 0%,rgba(99,217,255,.04) 50%,transparent 100%);height:18%;animation:scan 7s ease-in-out infinite}@keyframes scan{0%,100%{transform:translateY(-100%)}50%{transform:translateY(550%)}}
+
+    /* quick capabilities */
+    .cap-strip{padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.012);overflow:hidden}.cap-track{display:flex;gap:18px;width:max-content;animation:marquee 32s linear infinite}.cap-item{display:flex;align-items:center;gap:8px;color:var(--muted);font:650 .65rem var(--mono);white-space:nowrap}.cap-item b{color:var(--text-2)}.cap-item i{width:4px;height:4px;border-radius:50%;background:var(--accent)}@keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* capabilities */
+    .capability-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cap-card{padding:24px;min-height:310px;display:flex;flex-direction:column;transition:.22s}.cap-card:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:var(--shadow)}.cap-code{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px}.cap-code span{font:750 .65rem var(--mono);color:var(--accent);letter-spacing:.09em}.cap-code i{width:38px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}.cap-card h3{margin:0;font-size:1.24rem;letter-spacing:-.025em}.cap-card .summary{margin:10px 0 18px;color:var(--text-2);font-size:.86rem}.cap-card ul{padding:0;margin:auto 0 0;list-style:none;border-top:1px solid var(--line)}.cap-card li{padding:9px 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.72rem}.cap-card li strong{color:var(--text-2);font-weight:760}.cap-card .techline{margin-top:16px;color:var(--accent);font:650 .58rem var(--mono);line-height:1.7}
+
+    /* work */
+    .work-layout{display:grid;grid-template-columns:minmax(0,1.34fr) minmax(340px,.66fr);gap:16px}.featured{padding:30px;min-height:570px}.featured-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.status-chip{padding:6px 9px;border-radius:999px;border:1px solid rgba(247,200,115,.22);background:rgba(247,200,115,.06);color:#f7d28f;font:700 .58rem var(--mono);text-transform:uppercase;letter-spacing:.07em}.featured h3{margin:16px 0 12px;font-size:clamp(2rem,4vw,3.7rem);line-height:1;letter-spacing:-.055em;max-width:760px}.featured .lead{max-width:800px;color:var(--text-2);font-size:.93rem}.arch{position:relative;margin-top:28px;padding:24px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(180deg,rgba(4,13,23,.45),rgba(9,23,37,.62));overflow:hidden}.arch-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative;z-index:2}.arch-node{padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(12,28,44,.86);min-height:94px}.arch-node span{display:block;color:var(--accent);font:650 .54rem var(--mono);text-transform:uppercase;letter-spacing:.08em}.arch-node b{display:block;margin-top:7px;font-size:.8rem}.arch-node small{display:block;margin-top:6px;color:#7890a5;font-size:.6rem}.arch-flow{height:2px;margin:16px 6%;position:relative;background:linear-gradient(90deg,rgba(99,217,255,.15),rgba(99,217,255,.8),rgba(127,140,255,.65),rgba(99,217,255,.15));overflow:hidden}.arch-flow::after{content:"";position:absolute;width:24%;height:100%;background:white;box-shadow:0 0 12px var(--accent);animation:flow 3s linear infinite}@keyframes flow{from{left:-24%}to{left:100%}}
+    .engineering-focus{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}.focus{padding:12px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.015)}.focus b{display:block;font-size:.68rem}.focus span{display:block;margin-top:4px;color:var(--muted);font-size:.62rem}
+    .side-work{display:grid;gap:16px}.work-card{padding:24px;min-height:277px;display:flex;flex-direction:column}.work-card h4{margin:18px 0 8px;font-size:1.25rem}.work-card p{margin:0;color:var(--text-2);font-size:.8rem}.work-card .techline{margin-top:auto;padding-top:18px;color:var(--muted);font:650 .58rem var(--mono);line-height:1.8}.work-link{display:inline-flex;align-items:center;gap:7px;margin-top:18px;color:var(--accent);font-size:.7rem;font-weight:800}.work-link:hover{gap:10px}
+    .academic-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}.academic{padding:22px;display:grid;grid-template-columns:50px 1fr;gap:16px}.academic-icon{width:50px;height:50px;display:grid;place-items:center;border-radius:13px;border:1px solid var(--line);background:var(--surface-2);color:var(--accent);font:800 .7rem var(--mono)}.academic h4{margin:2px 0 6px;font-size:.92rem}.academic p{margin:0;color:var(--muted);font-size:.72rem}.academic .mini{margin-top:10px;font:620 .56rem var(--mono);color:var(--text-2)}
+
+    /* experience */
+    .experience-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:18px}.timeline{padding:26px}.timeline-label{font:700 .62rem var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.09em}.timeline h3{margin:14px 0 6px;font-size:1.45rem}.timeline .org{color:var(--text-2);font-size:.8rem}.timeline .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.timeline .meta span{padding:6px 8px;border:1px solid var(--line);border-radius:8px;color:var(--muted);font:620 .57rem var(--mono)}.timeline .divider{height:1px;background:var(--line);margin:24px 0}.timeline p{color:var(--muted);font-size:.76rem}.experience-detail{padding:26px}.experience-detail h3{margin:0 0 6px;font-size:1.34rem}.experience-detail>p{margin:0;color:var(--text-2);font-size:.82rem;max-width:820px}.ops-list{margin-top:22px;display:grid;gap:9px}.ops{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.014)}.ops .num{color:var(--accent);font:700 .58rem var(--mono);padding-top:2px}.ops b{display:block;font-size:.72rem}.ops span{display:block;margin-top:4px;color:var(--muted);font-size:.67rem}.case-strip{margin-top:18px;padding-top:17px;border-top:1px solid var(--line);color:var(--muted);font-size:.68rem}.case-strip strong{color:var(--text-2)}
+
+    /* toolchain */
+    .toolchain{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tool-card{padding:19px;min-height:210px}.tool-card h4{margin:0 0 14px;font-size:.84rem}.chipset{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.018);color:var(--text-2);font:620 .58rem var(--mono)}.chip.accent{border-color:rgba(99,217,255,.22);color:var(--accent);background:rgba(99,217,255,.035)}.tool-card p{margin:16px 0 0;color:var(--muted);font-size:.66rem}
+
+    /* github */
+    .github-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:16px;align-items:start}.gh-profile{padding:0;overflow:hidden}.gh-identity{padding:24px 24px 20px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(99,217,255,.055),transparent 48%)}.gh-user{display:flex;align-items:center;gap:14px}.gh-user img{width:58px;height:58px;border-radius:14px;border:1px solid var(--line-2);background:var(--surface-2)}.gh-user h3{margin:0;font-size:1.02rem}.gh-user p{margin:4px 0 0;color:var(--muted);font:600 .61rem var(--mono)}.gh-profile-link{margin-left:auto;display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;color:var(--text);font:700 .56rem var(--mono);text-transform:uppercase;letter-spacing:.06em;transition:.18s}.gh-profile-link:hover{border-color:var(--line-2);background:rgba(255,255,255,.03);transform:translateY(-1px)}.sync{display:flex;align-items:center;gap:7px;margin-top:15px;color:var(--muted);font:600 .56rem var(--mono)}.sync i{width:6px;height:6px;border-radius:50%;background:var(--warning)}.sync.ok i{background:var(--accent-3);box-shadow:0 0 10px rgba(121,240,194,.55)}
+    .git-graph{position:relative;height:138px;margin:20px 24px 0;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:radial-gradient(circle at 82% 12%,rgba(99,217,255,.09),transparent 30%),rgba(4,13,22,.28)}.git-graph:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(to bottom,black,transparent)}.git-line{position:absolute;height:2px;border-radius:99px;background:linear-gradient(90deg,rgba(99,217,255,.18),var(--accent),rgba(99,217,255,.18));transform-origin:left center}.git-line.main{left:12%;right:10%;top:54%}.git-line.branch{left:36%;width:40%;top:54%;transform:rotate(-21deg)}.git-line.merge{left:66%;width:19%;top:39%;transform:rotate(22deg)}.commit{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(99,217,255,.1),0 0 18px rgba(99,217,255,.45)}.commit.c1{left:13%;top:calc(54% - 4px)}.commit.c2{left:35%;top:calc(54% - 4px)}.commit.c3{left:55%;top:calc(54% - 4px)}.commit.c4{left:76%;top:calc(54% - 4px)}.commit.c5{left:48%;top:32%}.commit.c6{left:66%;top:25%}.commit.pulse{animation:commitPulse 2.1s ease-in-out infinite}@keyframes commitPulse{50%{box-shadow:0 0 0 8px rgba(99,217,255,0),0 0 24px rgba(99,217,255,.7)}}.git-label{position:absolute;color:var(--muted);font:700 .5rem var(--mono);letter-spacing:.08em;text-transform:uppercase}.git-label.main{left:12%;top:68%}.git-label.feature{left:47%;top:13%}.git-label.docs{right:9%;top:68%}.gh-signal{padding:18px 24px 24px}.gh-signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.language-bars,.activity-box{margin:0}.language-bars h4,.activity-box h4{margin:0 0 11px;font-size:.68rem}.bar-row{display:grid;grid-template-columns:70px 1fr 28px;gap:8px;align-items:center;margin:7px 0}.bar-row span{color:var(--muted);font:600 .52rem var(--mono)}.bar{height:5px;border-radius:99px;background:var(--surface-3);overflow:hidden}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform-origin:left;animation:barin .7s ease both}@keyframes barin{from{transform:scaleX(0)}}.activity-chart{height:92px;border:1px solid var(--line);border-radius:11px;background:rgba(4,13,22,.3);overflow:hidden;position:relative}.activity-chart canvas{width:100%;height:100%;display:block}.activity-note{margin-top:7px;color:var(--muted);font-size:.55rem}.events{margin-top:8px}.event:nth-child(n+3){display:none}
+    .source-overview{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:18px}.source-stat{position:relative;overflow:hidden;padding:14px 14px 13px;border:1px solid var(--line);border-radius:11px;background:linear-gradient(145deg,rgba(99,217,255,.035),rgba(127,140,255,.018));min-height:82px}.source-stat:after{content:"";position:absolute;left:-35%;bottom:0;width:35%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:sourceSweep 3.8s linear infinite}.source-stat:nth-child(2):after{animation-delay:-1s}.source-stat:nth-child(3):after{animation-delay:-2s}.source-stat:nth-child(4):after{animation-delay:-3s}@keyframes sourceSweep{to{left:105%}}.source-stat span{display:block;color:var(--muted);font:700 .49rem var(--mono);text-transform:uppercase;letter-spacing:.07em}.source-stat strong{display:block;margin-top:7px;font-size:1.18rem;line-height:1;color:var(--text)}.source-stat small{display:block;margin-top:7px;color:var(--dim);font:600 .48rem var(--mono);text-transform:uppercase;letter-spacing:.08em}.language-bars{padding-top:2px}.language-bars h4{margin:0 0 11px;font-size:.68rem}
+        .repo-panel{padding:0;overflow:hidden}.repo-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;padding:22px 22px 18px;border-bottom:1px solid var(--line)}.repo-head-copy span{display:block;color:var(--accent);font:800 .52rem var(--mono);letter-spacing:.12em;text-transform:uppercase}.repo-head-copy h3{margin:5px 0 0;font-size:1rem}.repo-head-copy p{margin:7px 0 0;color:var(--muted);font-size:.63rem;max-width:560px}.repo-tools{display:grid;grid-template-columns:minmax(180px,1fr) 130px 130px;gap:7px;padding:14px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.012)}.repo-tools[hidden]{display:none}.field{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);color:var(--text);outline:none;font-size:.65rem}.field:focus{border-color:rgba(99,217,255,.42);box-shadow:0 0 0 3px rgba(99,217,255,.05)}.repo-list{display:grid;gap:0}.repo{display:grid;grid-template-columns:1fr auto;gap:18px;padding:18px 22px;border-bottom:1px solid var(--line);transition:.18s;position:relative}.repo:last-child{border-bottom:0}.repo:before{content:"";position:absolute;left:0;top:20%;bottom:20%;width:2px;background:linear-gradient(var(--accent),var(--accent-2));opacity:0;transition:.18s}.repo:hover{background:rgba(255,255,255,.018)}.repo:hover:before{opacity:1}.repo-kicker{display:flex;align-items:center;gap:7px;margin-bottom:6px;color:var(--accent);font:800 .5rem var(--mono);letter-spacing:.09em;text-transform:uppercase}.repo b{display:block;font-size:.78rem}.repo p{margin:5px 0 0;color:var(--muted);font-size:.64rem;line-height:1.6;max-width:680px}.repo-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.repo-tag{padding:4px 7px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font:700 .49rem var(--mono);background:rgba(255,255,255,.012)}.repo-meta{display:flex;align-items:center;justify-content:flex-end;gap:10px;color:var(--muted);font:600 .53rem var(--mono);white-space:nowrap}.repo-open{color:var(--text);font-weight:800}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;background:var(--accent)}
+    .events{display:grid;gap:7px;margin-top:14px}.event{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line)}.event time{color:var(--muted);font:600 .52rem var(--mono)}.event div{font-size:.63rem;color:var(--text-2)}.event b{color:var(--text);font-weight:720}
+
+    /* contact */
+    .contact{padding:46px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;background:radial-gradient(circle at 100% 0,rgba(99,217,255,.08),transparent 30%),linear-gradient(180deg,var(--surface),var(--surface))}.contact h2{margin:12px 0 12px;font-size:clamp(2.5rem,5vw,5rem);line-height:.94;letter-spacing:-.06em}.contact p{max-width:700px;margin:0;color:var(--text-2)}.contact-actions{display:flex;flex-direction:column;gap:8px;min-width:210px}.contact-actions .btn{width:100%}.copy-feedback{min-height:18px;margin-top:7px;color:var(--accent-3);font:600 .55rem var(--mono);text-align:center}
+    footer{padding:26px 0 38px;color:var(--muted);font:600 .58rem var(--mono)}.footer-row{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:22px}
+
+    /* responsive */
+    @media(max-width:1080px){
+      .nav-links{display:none}.menu-btn{display:grid}.hero-grid{grid-template-columns:1fr}.hero{padding-top:82px}.hero-visual{min-height:520px}.visual-frame{min-height:485px}.capability-grid{grid-template-columns:repeat(2,1fr)}.work-layout,.experience-grid,.github-grid{grid-template-columns:1fr}.toolchain{grid-template-columns:repeat(2,1fr)}.section-head{grid-template-columns:1fr;gap:22px}.side-work{grid-template-columns:repeat(2,1fr)}.featured{min-height:auto}
+      .mobile-menu{display:none;position:absolute;top:70px;left:20px;right:20px;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}.mobile-menu.open{display:grid}.mobile-menu a{padding:11px;border-radius:9px;color:var(--text-2);font-size:.76rem}.mobile-menu a:hover{background:var(--surface-2)}
+    }
+    @media(max-width:720px){
+      .shell{width:min(100% - 24px,var(--max))}.section{padding:82px 0}.nav-wrap{padding-top:8px}.nav{border-radius:15px}.brand-copy span{display:none}.nav-actions .small-btn{display:none}.hero{min-height:auto;padding:72px 0 58px}.hero h1{font-size:clamp(3.3rem,17vw,5.2rem)}.hero-grid{gap:42px}.hero-role{font-size:1.22rem}.hero-actions{display:grid;grid-template-columns:1fr 1fr}.btn{padding:11px 12px}.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hero-visual{min-height:470px;padding:8px}.visual-frame{min-height:452px;border-radius:15px}.node{min-width:84px;padding:8px}.node b{font-size:.58rem}.node small{font-size:.46rem}.visual-bottom{grid-template-columns:repeat(2,1fr)}.visual-bottom .live-stat:nth-child(3),.visual-bottom .live-stat:nth-child(4){display:none}.capability-grid,.side-work,.academic-row,.toolchain{grid-template-columns:1fr}.arch-row{grid-template-columns:1fr 1fr}.engineering-focus{grid-template-columns:1fr}.featured{padding:20px}.experience-detail,.timeline{padding:20px}.gh-identity,.gh-signal,.repo-head{padding-left:18px;padding-right:18px}.git-graph{margin-left:18px;margin-right:18px}.source-overview{grid-template-columns:1fr 1fr}.repo-tools{grid-template-columns:1fr 1fr;padding-left:18px;padding-right:18px}.repo-tools input{grid-column:1/-1}.repo{grid-template-columns:1fr;padding-left:18px;padding-right:18px}.repo-meta{white-space:normal;flex-wrap:wrap}.contact{padding:26px;grid-template-columns:1fr}.contact-actions{min-width:0}.footer-row{flex-direction:column}.section-head h2{font-size:2.75rem}.cap-track{animation-duration:22s}
+    }
+    @media(max-width:430px){.hero-actions{grid-template-columns:1fr}.hero-meta{grid-template-columns:1fr}.visual-frame{min-height:420px}.topology{inset:50px 0 100px}.node{min-width:76px}.section-head h2{font-size:2.35rem}.arch-node{min-height:84px}.academic{grid-template-columns:42px 1fr}.academic-icon{width:42px;height:42px}.contact h2{font-size:2.7rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}.cap-track{transform:none!important}.scan{display:none}}
+
+
+    /* V7 — professional product-style refinement */
+    :root{
+      --accent:#5eead4;
+      --accent-2:#60a5fa;
+      --accent-3:#a78bfa;
+      --surface:#0a1723;
+      --surface-2:#0d1d2b;
+      --surface-3:#112538;
+      --line:rgba(148,177,202,.13);
+      --line-2:rgba(148,177,202,.24);
+    }
+    body{background:
+      radial-gradient(circle at 18% -8%,rgba(96,165,250,.10),transparent 28rem),
+      radial-gradient(circle at 88% 22%,rgba(94,234,212,.07),transparent 30rem),
+      var(--bg)}
+    .section-head h2{max-width:900px}
+    .section-head>p{font-size:.88rem;line-height:1.85;max-width:700px}
+    .hero-role{max-width:760px}
+    .hero-desc{max-width:790px;font-size:1rem;line-height:1.85}
+    .hero-core{display:flex;flex-wrap:wrap;gap:7px;margin:24px 0 0}
+    .hero-core span{padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.018);font:700 .6rem var(--mono);color:var(--text-2);letter-spacing:.02em}
+    .hero-core span.primary{color:var(--accent);border-color:rgba(94,234,212,.23);background:rgba(94,234,212,.045)}
+    .hero-meta{margin-top:18px}
+    .cap-card{position:relative;overflow:hidden;min-height:350px}
+    .cap-card::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
+    .cap-card::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-95px;top:-110px;background:radial-gradient(circle,rgba(96,165,250,.10),transparent 68%);pointer-events:none}
+    .cap-card h3{font-size:1.14rem;letter-spacing:-.02em}
+    .cap-card .summary{font-size:.78rem;line-height:1.75}
+    .cap-card li{font-size:.69rem;line-height:1.65}
+    .techline{font-size:.55rem!important;letter-spacing:.02em}
+    .pro-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;font:700 .52rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .pro-tag i{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    .work-card{position:relative;overflow:hidden}
+    .work-card::before,.academic::before{content:"";position:absolute;inset:0 auto auto 0;width:42%;height:1px;background:linear-gradient(90deg,var(--accent-2),transparent);opacity:.55}
+    .academic{position:relative;overflow:hidden;min-height:170px}
+    .toolchain{grid-template-columns:repeat(3,1fr)}
+    .tool-card{min-height:230px;position:relative;overflow:hidden}
+    .tool-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent 75%);opacity:.45}
+    .tool-card h4{font-size:.88rem}
+    .tool-card p{font-size:.69rem;line-height:1.65}
+    .chip{font-size:.57rem}
+    .contact h2{max-width:750px}
+    .profile-note{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+    .profile-note>div{padding:14px 15px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.014)}
+    .profile-note span{display:block;color:var(--muted);font:700 .52rem var(--mono);text-transform:uppercase;letter-spacing:.07em}
+    .profile-note b{display:block;margin-top:5px;font-size:.73rem;font-weight:750}
+    @media(max-width:1080px){.toolchain{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.toolchain,.profile-note{grid-template-columns:1fr}.hero-core{gap:6px}.hero-core span{font-size:.56rem}}
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <div class="top-signal" aria-hidden="true"></div>
+  <div class="blueprint" aria-hidden="true"></div><div class="noise" aria-hidden="true"></div>
+  <div class="aurora a" aria-hidden="true"></div><div class="aurora b" aria-hidden="true"></div><div class="aurora c" aria-hidden="true"></div>
+
+  <div class="nav-wrap shell">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio"><span class="mark">SJM</span><span class="brand-copy"><b>Sergio Jiménez Macías</b><span>Computer Engineering Portfolio</span></span></a>
+      <div class="nav-links"><a href="#capacidades">Competencias</a><a href="#proyectos">Proyectos</a><a href="#experiencia">Experiencia</a><a href="#toolchain">Tecnologías</a><a href="#github">GitHub</a></div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema" title="Cambiar tema">◐</button>
+        <a class="small-btn" href="https://github.com/seergiojm23" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="small-btn primary" href="#contacto">Contacto</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-expanded="false" aria-label="Abrir menú">☰</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu"><a href="#capacidades">Competencias</a><a href="#proyectos">Proyectos</a><a href="#experiencia">Experiencia</a><a href="#toolchain">Tecnologías</a><a href="#github">GitHub</a><a href="#contacto">Contacto</a></div>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div class="hero-copyblock">
+          <span class="availability"><i></i> Open to engineering opportunities · Spain / Remote</span>
+          <h1>SERGIO <span>JIMÉNEZ MACÍAS</span></h1>
+          <p class="hero-role">Computer Engineering · <em>Software · Systems · Platform Engineering · Data · Security</em></p>
+          <p class="hero-desc">Perfil de <strong>Ingeniería Informática — Ingeniería de Computadores</strong> orientado a desarrollo software, sistemas e infraestructura, plataformas distribuidas y operaciones de seguridad. Experiencia práctica con <strong>Java, Python, C/C++, SQL, Linux, Docker, Kubernetes/K3s, Apache Spark, HDFS, Microsoft Defender y KQL</strong>, combinando programación, automatización, despliegue de servicios, análisis técnico y resolución de problemas sobre entornos Linux y Microsoft.</p>
+          <div class="hero-core" aria-label="Tecnologías principales">
+            <span class="primary">Java</span><span class="primary">Python</span><span class="primary">C / C++</span><span class="primary">SQL / MariaDB</span><span>Linux</span><span>Docker / Compose</span><span>Kubernetes / K3s</span><span>Spark / HDFS</span><span>Git / GitHub</span><span>Bash / Shell</span><span>KQL</span><span>OpenMP / MPI / OpenCL</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="#proyectos">Ver proyectos <span>↓</span></a>
+            <a class="btn" href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-mac%C3%ADas-94556723b" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="btn ghost" href="https://github.com/seergiojm23" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+          <div class="hero-meta">
+            <span><i></i><b>Software Engineering</b> Java · Python · C/C++ · SQL · Bash</span>
+            <span><i></i><b>Platform Engineering</b> Linux · Docker · K3s · NFS · Xen</span>
+            <span><i></i><b>Distributed Data</b> Spark · Hadoop/HDFS · S3-compatible APIs</span>
+            <span><i></i><b>Security Operations</b> Defender · KQL · Entra ID · Intune</span>
+          </div>
+        </div>
+
+        <aside class="panel hero-visual" aria-label="Mapa visual de capacidades técnicas">
+          <div class="visual-frame">
+            <div class="visual-top"><span>engineering topology / live interface</span><span class="live"><i></i><span id="heroSync">initialising</span></span></div>
+            <div class="scan" aria-hidden="true"></div>
+            <div class="topology" aria-hidden="true">
+              <svg viewBox="0 0 760 470" preserveAspectRatio="none">
+                <defs><linearGradient id="flowGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#63d9ff" stop-opacity=".18"/><stop offset=".48" stop-color="#63d9ff" stop-opacity=".88"/><stop offset="1" stop-color="#7f8cff" stop-opacity=".48"/></linearGradient></defs>
+                <path class="base" d="M150 110 C270 40 410 45 585 140"/><path class="flow" d="M150 110 C270 40 410 45 585 140"/>
+                <path class="base" d="M150 110 C230 175 210 250 210 300"/><path class="flow" d="M150 110 C230 175 210 250 210 300"/>
+                <path class="base" d="M380 80 C390 180 390 210 450 260"/><path class="flow" d="M380 80 C390 180 390 210 450 260"/>
+                <path class="base" d="M585 140 C540 210 520 240 450 260"/><path class="flow" d="M585 140 C540 210 520 240 450 260"/>
+                <path class="base" d="M210 300 C330 315 410 300 450 260"/><path class="flow" d="M210 300 C330 315 410 300 450 260"/>
+                <path class="base" d="M450 260 C560 290 590 330 610 370"/><path class="flow" d="M450 260 C560 290 590 330 610 370"/>
+                <path class="base" d="M210 300 C245 380 300 410 355 408"/><path class="flow" d="M210 300 C245 380 300 410 355 408"/>
+                <path class="base" d="M355 408 C470 430 565 405 610 370"/><path class="flow" d="M355 408 C470 430 565 405 610 370"/>
+                <circle class="packet" r="3.2" fill="#dff9ff"><animateMotion dur="4.8s" repeatCount="indefinite" path="M150 110 C270 40 410 45 585 140"/></circle>
+                <circle class="packet" r="2.7" fill="#63d9ff"><animateMotion dur="5.8s" begin="-2s" repeatCount="indefinite" path="M210 300 C330 315 410 300 450 260"/></circle>
+                <circle class="packet" r="3" fill="#93f7d5"><animateMotion dur="6.2s" begin="-1.1s" repeatCount="indefinite" path="M450 260 C560 290 590 330 610 370"/></circle>
+                <circle class="packet" r="2.7" fill="#a8b2ff"><animateMotion dur="6.8s" begin="-3s" repeatCount="indefinite" path="M210 300 C245 380 300 410 355 408"/></circle>
+              </svg>
+              <div class="node n1"><b>Linux / Systems</b><small>OS & infrastructure</small></div>
+              <div class="node n2"><b>Docker / K3s</b><small>containers & orchestration</small></div>
+              <div class="node n3"><b>Defender / KQL</b><small>security operations</small></div>
+              <div class="node n4"><b>Java / SQL</b><small>software & data</small></div>
+              <div class="node n5"><b>Python / Spark</b><small>distributed processing</small></div>
+              <div class="node n6"><b>HDFS / NFS</b><small>storage layer</small></div>
+              <div class="node n7"><b>OpenMP / MPI</b><small>parallel computing</small></div>
+              <div class="node n8"><b>MQTT / Modbus</b><small>networked devices</small></div>
+            </div>
+            <div class="visual-bottom">
+              <div class="live-stat"><span>GitHub</span><strong id="heroStatus">LIVE</strong><small>perfil conectado</small></div>
+              <div class="live-stat"><span>API latency</span><strong id="heroLatency">—</strong><small>tiempo de respuesta</small></div>
+              <div class="live-stat"><span>Repositorios</span><strong id="heroRepos">—</strong><small>código público</small></div>
+              <div class="live-stat"><span>Última actualización</span><strong id="heroUpdated">—</strong><small>repositorio</small></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="cap-strip" aria-hidden="true"><div class="cap-track" id="capTrack">
+      <span class="cap-item"><i></i><b>Software engineering</b> Java · Python · C/C++ · SQL</span><span class="cap-item"><i></i><b>Systems & infrastructure</b> Linux · Docker Compose · K3s · Xen · NFS</span><span class="cap-item"><i></i><b>Distributed computing</b> Spark · Hadoop/HDFS · S3</span><span class="cap-item"><i></i><b>Security operations</b> Defender · KQL · Entra ID · Intune</span><span class="cap-item"><i></i><b>Parallel computing</b> OpenMP · MPI · OpenCL</span><span class="cap-item"><i></i><b>Networks & IoT</b> TCP/IP · MQTT · Modbus · Arduino Yún</span>
+      <span class="cap-item"><i></i><b>Software engineering</b> Java · Python · C/C++ · SQL</span><span class="cap-item"><i></i><b>Systems & infrastructure</b> Linux · Docker Compose · K3s · Xen · NFS</span><span class="cap-item"><i></i><b>Distributed computing</b> Spark · Hadoop/HDFS · S3</span><span class="cap-item"><i></i><b>Security operations</b> Defender · KQL · Entra ID · Intune</span><span class="cap-item"><i></i><b>Parallel computing</b> OpenMP · MPI · OpenCL</span><span class="cap-item"><i></i><b>Networks & IoT</b> TCP/IP · MQTT · Modbus · Arduino Yún</span>
+    </div></div>
+
+    <section class="section" id="capacidades">
+      <div class="shell">
+        <div class="section-head"><div><span class="eyebrow">Perfil técnico</span><h2>Competencias de ingeniería.</h2></div><p>Áreas en las que he aplicado conocimientos de desarrollo software, sistemas e infraestructura, procesamiento distribuido, seguridad, computación paralela y comunicaciones.</p></div>
+        <div class="capability-grid">
+          <article class="panel cap-card"><div class="cap-code"><span>01 / SWE</span><i></i></div><h3>Software Engineering & Automation</h3><p class="summary">Desarrollo de software y automatización con base en programación orientada a objetos, estructuras de datos, algoritmos, concurrencia y persistencia relacional.</p><ul><li><strong>Java & Python</strong> · desarrollo generalista, automatización, procesamiento de datos y tooling.</li><li><strong>C / C++</strong> · programación de sistemas, concurrencia y cómputo paralelo.</li><li><strong>SQL / MariaDB</strong> · consultas, modelado relacional, administración básica y procesos de backup.</li><li><strong>Bash / Shell</strong> · scripting, automatización operativa y tareas programadas.</li></ul><div class="techline">JAVA · PYTHON · C · C++ · SQL · MARIADB · BASH/SHELL · GIT</div></article>
+
+          <article class="panel cap-card"><div class="cap-code"><span>02 / PLATFORM</span><i></i></div><h3>Systems & Platform Engineering</h3><p class="summary">Administración y despliegue de servicios sobre Linux, contenedores, virtualización y orquestación ligera.</p><ul><li><strong>Linux / Ubuntu</strong> · CLI, procesos, hilos, memoria, file descriptors, system calls y servicios.</li><li><strong>Docker / Compose</strong> · imágenes, contenedores, redes, volúmenes, servicios multi-container y exposición de servicios.</li><li><strong>Kubernetes / K3s</strong> · control plane, workers, Ingress, Services, PVC, ConfigMaps, Secrets y RBAC.</li><li><strong>Service delivery</strong> · Traefik, Nginx Proxy Manager, Portainer, SSH y reverse proxy.</li><li><strong>Virtualization & recovery</strong> · Xen, NFS, snapshots, exportación XVA, cron, backup y restore.</li></ul><div class="techline">LINUX · UBUNTU · DOCKER · COMPOSE · KUBERNETES/K3S · TRAEFIK · NGINX PROXY MANAGER · NFS · XEN · XVA · SSH · CRON</div></article>
+
+          <article class="panel cap-card"><div class="cap-code"><span>03 / DATA</span><i></i></div><h3>Distributed Data Engineering</h3><p class="summary">Diseño de flujos de ingestión y procesamiento distribuido orientados a repartir trabajo, reducir transferencias centralizadas y persistir datos de forma escalable.</p><ul><li><strong>Apache Spark</strong> · task partitioning, scheduling y ejecución distribuida sobre workers.</li><li><strong>Hadoop / HDFS</strong> · almacenamiento distribuido y escritura directa desde ejecutores.</li><li><strong>Remote object access</strong> · integración con servicios S3-compatible y Copernicus Data Space.</li><li><strong>Data handling</strong> · Python, SQL/MariaDB y procesamiento estructurado de datos.</li></ul><div class="techline">APACHE SPARK · HADOOP · HDFS · S3-COMPATIBLE APIs · PYTHON · SQL · MARIADB · COPERNICUS DATA SPACE</div></article>
+
+          <article class="panel cap-card"><div class="cap-code"><span>04 / SEC</span><i></i></div><h3>Security Operations & Threat Hunting</h3><p class="summary">Triage e investigación de telemetría de identidad, endpoint, correo y actividad cloud dentro del ecosistema Microsoft.</p><ul><li><strong>Microsoft Defender</strong> · análisis de alertas, EDR/XDR y Advanced Hunting.</li><li><strong>KQL</strong> · consultas y funciones reutilizables para correlación e investigación.</li><li><strong>Identity & device telemetry</strong> · Entra ID, Intune, MFA, Risky Users y sign-in analysis.</li><li><strong>Email / cloud telemetry</strong> · EmailEvents, UrlClickEvents, EmailAttachmentInfo, CloudAppEvents, Graph y SharePoint.</li><li><strong>IOC enrichment</strong> · VirusTotal, AbuseIPDB, Any.Run y Windows Sandbox.</li></ul><div class="techline">DEFENDER XDR/EDR · KQL · ENTRA ID · INTUNE · MICROSOFT 365 · GRAPH · SHAREPOINT · VIRUSTOTAL · ABUSEIPDB · ANY.RUN</div></article>
+
+          <article class="panel cap-card"><div class="cap-code"><span>05 / HPC</span><i></i></div><h3>Parallel & Heterogeneous Computing</h3><p class="summary">Paralelización de cargas computacionales sobre memoria compartida, paso de mensajes y dispositivos heterogéneos.</p><ul><li><strong>OpenMP</strong> · paralelismo multicore y regiones paralelas sobre CPU.</li><li><strong>MPI</strong> · distribución de carga, comunicación entre procesos y sincronización.</li><li><strong>OpenCL</strong> · kernels y ejecución heterogénea.</li><li><strong>Performance analysis</strong> · implementación y evaluación de K-Means paralelo.</li></ul><div class="techline">OPENMP · MPI · OPENCL · C/C++ · K-MEANS · PARALLEL ALGORITHMS · PERFORMANCE ANALYSIS</div></article>
+
+          <article class="panel cap-card"><div class="cap-code"><span>06 / NET</span><i></i></div><h3>Networking, Services & IoT</h3><p class="summary">Configuración de servicios y comunicaciones sobre redes IP, exposición de aplicaciones y dispositivos conectados.</p><ul><li><strong>Networking</strong> · TCP/IP, direccionamiento, routing y redes de contenedores.</li><li><strong>Service exposure</strong> · HTTP, reverse proxy, Ingress y balanceo mediante Services.</li><li><strong>IoT protocols</strong> · MQTT y Modbus para mensajería y telemetría.</li><li><strong>Embedded environments</strong> · Arduino Yún e integración hardware/software.</li></ul><div class="techline">TCP/IP · HTTP · ROUTING · DOCKER NETWORKS · NGINX PROXY MANAGER · TRAEFIK · MQTT · MODBUS · ARDUINO YÚN</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <div class="shell">
+        <div class="section-head"><div><span class="eyebrow">Proyectos</span><h2>Proyectos técnicos.</h2></div><p>Selección de trabajos en sistemas distribuidos, infraestructura, programación de sistemas, computación paralela e IoT, con el stack y las decisiones técnicas más relevantes de cada implementación.</p></div>
+        <div class="work-layout">
+          <article class="panel featured">
+            <div class="featured-head"><span class="kicker">Proyecto destacado · Sistemas distribuidos</span><span class="status-chip">Spark · HDFS · Copernicus</span></div>
+            <h3>Distributed Sentinel Product Ingestion</h3>
+            <p class="lead">Rediseño de la ingestión de productos Sentinel desde Copernicus mediante una arquitectura distribuida con <strong>Apache Spark</strong> y persistencia directa en <strong>HDFS</strong>. El objetivo técnico es repartir la descarga entre executors, reducir transferencias centralizadas y acercar la persistencia al punto de ejecución.</p>
+            <div class="arch" aria-label="Arquitectura de ingestión distribuida">
+              <div class="arch-row"><div class="arch-node"><span>Source</span><b>Copernicus</b><small>Sentinel products / object access</small></div><div class="arch-node"><span>Orchestration</span><b>Spark Driver</b><small>partitioning / scheduling</small></div><div class="arch-node"><span>Execution</span><b>Spark Executors</b><small>parallel retrieval / processing</small></div><div class="arch-node"><span>Storage</span><b>HDFS</b><small>distributed persistence</small></div></div>
+              <div class="arch-flow" aria-hidden="true"></div>
+              <div class="engineering-focus"><div class="focus"><b>Task partitioning</b><span>Distribución de productos y trabajo entre executors.</span></div><div class="focus"><b>Direct-to-HDFS writes</b><span>Persistencia desde la ejecución distribuida hacia HDFS.</span></div><div class="focus"><b>Remote object access</b><span>Recuperación de productos Sentinel desde Copernicus.</span></div><div class="focus"><b>Bottleneck reduction</b><span>Eliminación de transferencias centralizadas innecesarias.</span></div></div>
+            </div>
+            <div class="hero-meta"><span><i></i><b>Stack</b> Python · Spark · Hadoop/HDFS</span><span><i></i><b>Domain</b> Distributed systems · Data ingestion</span></div>
+          </article>
+
+          <div class="side-work">
+            <article class="panel work-card"><span class="pro-tag"><i></i> Infraestructura & Kubernetes</span><h4>K3s / Kubernetes Service Platform</h4><p>Despliegue de un clúster con <strong>control-plane y workers</strong>, publicación mediante Ingress, almacenamiento persistente sobre NFS y configuración de aplicaciones con réplicas, ConfigMaps, Secrets y RBAC.</p><div class="techline">K3S · KUBERNETES · TRAEFIK · NFS · PVC · CONFIGMAPS · SECRETS · RBAC · LINUX</div></article>
+            <article class="panel work-card"><span class="pro-tag"><i></i> Contenedores & servicios</span><h4>Containerized Services & Reverse Proxy</h4><p>Entorno multi-servicio con Docker Compose y red compartida, integrando WordPress, BookStack, Portainer y code-server detrás de <strong>Nginx Proxy Manager</strong>, con administración remota sobre Ubuntu/SSH.</p><div class="techline">DOCKER · DOCKER COMPOSE · NGINX PROXY MANAGER · PORTAINER · WORDPRESS · BOOKSTACK · SSH</div></article>
+          </div>
+        </div>
+        <div class="academic-row">
+          <article class="panel academic"><div class="academic-icon">VIRT</div><div><h4>Virtualization, Backup & Recovery</h4><p>Automatización de snapshots y exportaciones XVA sobre Xen, almacenamiento compartido NFS, retención, logging, tareas programadas y recuperación; backup comprimido de MariaDB.</p><div class="mini">XEN · NFS · BASH · CRON · MARIADB · XVA · SNAPSHOTS · BACKUP/RESTORE</div></div></article>
+          <article class="panel academic"><div class="academic-icon">HPC</div><div><h4>Parallel K-Means</h4><p>Paralelización de cargas computacionales con memoria compartida, message passing y ejecución heterogénea, evaluando distribución de trabajo y rendimiento.</p><div class="mini">C/C++ · OPENMP · MPI · OPENCL · K-MEANS · PERFORMANCE</div></div></article>
+          <article class="panel academic"><div class="academic-icon">ML</div><div><h4>Machine Learning with Python</h4><p>Tratamiento numérico, visualización, clasificación de patrones y extracción de características sobre Python.</p><div class="mini">PYTHON · NUMPY · MATPLOTLIB · PATTERN CLASSIFICATION · FEATURE EXTRACTION</div></div></article>
+          <article class="panel academic"><div class="academic-icon">SYS</div><div><h4>Systems Programming & System Calls</h4><p>Procesos, hilos, scheduling, memoria virtual, file descriptors, E/S y sincronización mediante prácticas de programación de sistemas en C.</p><div class="mini">C · POSIX CONCEPTS · PROCESSES · THREADS · FILE I/O · SYNCHRONIZATION</div></div></article>
+          <article class="panel academic"><div class="academic-icon">IOT</div><div><h4>Connected Devices & IoT</h4><p>Integración de dispositivos y comunicaciones de aplicación con Arduino Yún, MQTT y Modbus sobre redes IP.</p><div class="mini">ARDUINO YÚN · MQTT · MODBUS · TCP/IP · EMBEDDED SYSTEMS</div></div></article>
+          <article class="panel academic"><div class="academic-icon">OPS</div><div><h4>Containerized Service Delivery</h4><p>Despliegue y publicación de servicios con Docker Compose, redes de contenedores, MariaDB, reverse proxy y administración remota por SSH.</p><div class="mini">DOCKER · COMPOSE · MARIADB · NGINX PROXY MANAGER · SSH · DOCKER NETWORKING</div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <div class="shell">
+        <div class="section-head"><div><span class="eyebrow">Trayectoria</span><h2>Experiencia.</h2></div><p>Experiencia en operaciones de seguridad y formación técnica en Ingeniería de Computadores, con foco en sistemas, infraestructura, desarrollo software, redes y computación distribuida.</p></div>
+        <div class="experience-grid">
+          <aside class="panel timeline">
+            <span class="timeline-label">Academic foundation</span><h3>Grado en Ingeniería Informática</h3><div class="org">Universidad de Extremadura · Escuela Politécnica</div><div class="meta"><span>Ingeniería de Computadores</span><span>Systems & Infrastructure</span><span>Distributed Computing</span></div><div class="divider"></div><span class="timeline-label">Engineering focus</span><p>Sistemas operativos, programación de sistemas, redes, bases de datos, infraestructura containerizada, virtualización, procesamiento distribuido, computación paralela, IoT y seguridad.</p>
+          </aside>
+          <article class="panel experience-detail">
+            <span class="kicker">May–Jun 2026 · 150 h · UEx Servicio de Informática y Comunicaciones</span><h3>Security Operations Intern</h3><p>Trabajo en el flujo operativo del SOC universitario, realizando triage, investigación y correlación de telemetría sobre identidad, endpoints, correo y Microsoft 365.</p>
+            <div class="ops-list">
+              <div class="ops"><span class="num">01</span><div><b>Alert triage & evidence collection</b><span>Revisión de alertas en Microsoft Defender y consolidación de IP, dispositivo, usuario, aplicación, ventana temporal, criticidad y estado de riesgo.</span></div></div>
+              <div class="ops"><span class="num">02</span><div><b>Advanced Hunting / KQL</b><span>Consultas sobre EmailEvents, UrlClickEvents, EmailAttachmentInfo, CloudAppEvents y otras fuentes para correlacionar actividad y reducir el alcance de investigación.</span></div></div>
+              <div class="ops"><span class="num">03</span><div><b>Identity & access investigation</b><span>Análisis de sign-ins, MFA, cambios de contraseña, Risky Users y patrones anómalos en Entra ID y Microsoft 365.</span></div></div>
+              <div class="ops"><span class="num">04</span><div><b>Email, cloud & OAuth investigation</b><span>Investigación de eventos de correo, SharePoint y aplicaciones OAuth, incluyendo anomalías de acceso, descargas y actividad cloud.</span></div></div>
+              <div class="ops"><span class="num">05</span><div><b>IOC enrichment & sandbox analysis</b><span>Contraste de indicadores y artefactos con VirusTotal, AbuseIPDB, Any.Run y Windows Sandbox para contextualizar actividad sospechosa.</span></div></div>
+              <div class="ops"><span class="num">06</span><div><b>Reusable hunting queries</b><span>Desarrollo de consultas KQL reutilizables para remitentes, URLs, adjuntos por NetworkMessageId, sign-ins por usuario/IP, procesos por equipo y correo clasificado como spam.</span></div></div>
+            </div>
+            <div class="case-strip"><strong>Investigaciones:</strong> LOLBins/regsvr32, compromiso de cuenta, anomalías OAuth, malware/PUA, fallos de autenticación y actividad sospechosa en SharePoint y correo.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="toolchain">
+      <div class="shell">
+        <div class="section-head"><div><span class="eyebrow">Stack técnico</span><h2>Tecnologías.</h2></div><p>Lenguajes, plataformas, herramientas y librerías organizados por función técnica.</p></div>
+        <div class="toolchain">
+          <article class="panel tool-card"><h4>Lenguajes de programación</h4><div class="chipset"><span class="chip accent">Java</span><span class="chip accent">Python</span><span class="chip accent">C</span><span class="chip">C++</span><span class="chip accent">SQL</span><span class="chip">Bash / Shell</span></div><p>Programación orientada a objetos, estructuras de datos, automatización, programación de sistemas, scripting y consultas sobre bases de datos relacionales.</p></article>
+
+          <article class="panel tool-card"><h4>Sistemas e infraestructura</h4><div class="chipset"><span class="chip accent">Linux</span><span class="chip">Ubuntu</span><span class="chip">Windows</span><span class="chip accent">Docker</span><span class="chip">Docker Compose</span><span class="chip accent">Kubernetes / K3s</span><span class="chip">Traefik</span><span class="chip">Nginx Proxy Manager</span><span class="chip">Portainer</span><span class="chip">Xen</span><span class="chip">NFS</span><span class="chip">SSH</span></div><p>Administración de sistemas, contenedores, orquestación, virtualización, almacenamiento compartido, publicación de servicios y acceso remoto.</p></article>
+
+          <article class="panel tool-card"><h4>Datos y almacenamiento</h4><div class="chipset"><span class="chip accent">Apache Spark</span><span class="chip accent">Hadoop / HDFS</span><span class="chip accent">MariaDB</span><span class="chip">S3-compatible APIs</span><span class="chip">Copernicus Data Space</span></div><p>Procesamiento distribuido, particionado de trabajo, persistencia en HDFS, acceso a objetos remotos y almacenamiento relacional.</p></article>
+
+          <article class="panel tool-card"><h4>Seguridad</h4><div class="chipset"><span class="chip accent">Microsoft Defender</span><span class="chip accent">KQL</span><span class="chip">Entra ID</span><span class="chip">Intune</span><span class="chip">Microsoft 365</span><span class="chip">Microsoft Graph</span><span class="chip">SharePoint</span><span class="chip">VirusTotal</span><span class="chip">AbuseIPDB</span><span class="chip">Any.Run</span><span class="chip">Windows Sandbox</span></div><p>Advanced Hunting, investigación de identidad y endpoint, análisis de correo y actividad cloud, correlación de eventos y enriquecimiento de indicadores.</p></article>
+
+          <article class="panel tool-card"><h4>Computación paralela</h4><div class="chipset"><span class="chip accent">OpenMP</span><span class="chip accent">MPI</span><span class="chip accent">OpenCL</span></div><p>Paralelismo en memoria compartida, paso de mensajes y ejecución heterogénea aplicados a cargas computacionales.</p></article>
+
+          <article class="panel tool-card"><h4>Redes e IoT</h4><div class="chipset"><span class="chip accent">TCP/IP</span><span class="chip">HTTP</span><span class="chip">Routing</span><span class="chip accent">MQTT</span><span class="chip accent">Modbus</span><span class="chip">Arduino Yún</span></div><p>Comunicaciones IP, exposición de servicios, routing y protocolos de mensajería y telemetría para dispositivos conectados.</p></article>
+
+          <article class="panel tool-card"><h4>Herramientas de desarrollo</h4><div class="chipset"><span class="chip accent">Git</span><span class="chip accent">GitHub</span><span class="chip">VS Code</span><span class="chip">Make</span><span class="chip">GCC</span><span class="chip">cron</span></div><p>Control de versiones, organización de repositorios, compilación, automatización de builds, tareas programadas y documentación técnica.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="github">
+      <div class="shell">
+        <div class="section-head"><div><span class="eyebrow">GitHub</span><h2>Código y repositorios.</h2></div><p>Proyectos versionados, implementaciones técnicas y documentación asociada.</p></div>
+        <div class="github-grid">
+          <aside class="panel gh-profile">
+            <div class="gh-identity">
+              <div class="gh-user"><img id="ghAvatar" alt="Avatar de GitHub de Sergio Jiménez Macías"><div><h3 id="ghName">Sergio Jiménez Macías</h3><p id="ghLogin">@seergiojm23</p></div><a class="gh-profile-link" href="https://github.com/seergiojm23" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+              <div class="sync" id="syncState"><i></i><span>Conectando con GitHub…</span></div>
+            </div>
+            <div class="git-graph" aria-hidden="true">
+              <span class="git-line main"></span><span class="git-line branch"></span><span class="git-line merge"></span>
+              <i class="commit c1"></i><i class="commit c2"></i><i class="commit c3 pulse"></i><i class="commit c4"></i><i class="commit c5"></i><i class="commit c6 pulse"></i>
+              <span class="git-label main">main</span><span class="git-label feature">feature / engineering</span><span class="git-label docs">docs</span>
+            </div>
+            <div class="gh-signal">
+              <div class="source-overview" aria-label="Resumen de GitHub">
+                <div class="source-stat"><span>Repositorios</span><strong id="ghRepoCount">—</strong><small>públicos</small></div>
+                <div class="source-stat"><span>Lenguajes</span><strong id="ghLanguageCount">—</strong><small>principales</small></div>
+                <div class="source-stat"><span>Última actualización</span><strong id="ghLatestUpdate">—</strong><small>repositorio</small></div>
+                <div class="source-stat"><span>GitHub</span><strong id="ghLatency">—</strong><small>latencia API</small></div>
+              </div>
+              <div class="language-bars"><h4>Lenguajes principales</h4><div id="languageBars"><span class="muted" style="font-size:.65rem">Cargando…</span></div></div>
+            </div>
+          </aside>
+          <article class="panel repo-panel">
+            <div class="repo-head"><div class="repo-head-copy"><span>Repositorios</span><h3>Proyectos publicados</h3></div></div>
+            <div class="repo-tools" id="repoTools"><input class="field" id="repoSearch" placeholder="Buscar repositorio…" aria-label="Buscar repositorio"><select class="field" id="repoLanguage" aria-label="Filtrar por lenguaje"><option value="all">Todos los lenguajes</option></select><select class="field" id="repoSort" aria-label="Ordenar repositorios"><option value="updated">Última actualización</option><option value="name">Nombre</option></select></div>
+            <div class="repo-list" id="repoList"><div class="repo"><div><span class="repo-kicker">GitHub</span><b>Cargando repositorios…</b></div></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact" id="contacto">
+      <div class="shell">
+        <div class="panel contact">
+          <div><span class="eyebrow">Professional contact</span><h2>Disponible para oportunidades de ingeniería.</h2><p>Interesado en posiciones de <strong>software engineering, systems & platform engineering, data engineering y security operations</strong>, especialmente en entornos donde converjan infraestructura, automatización y sistemas distribuidos.</p></div>
+          <div class="contact-actions"><a class="btn primary" href="mailto:seergiiojm@gmail.com">Enviar email</a><a class="btn" href="https://www.linkedin.com/in/sergio-jim%C3%A9nez-mac%C3%ADas-94556723b" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn" href="https://github.com/seergiojm23" target="_blank" rel="noopener noreferrer">GitHub ↗</a><button class="btn" id="copyEmail">Copiar email</button><a class="btn" id="cvButton" href="CV_Sergio_Jimenez_Macias.pdf" hidden>Descargar CV</a><div class="copy-feedback" id="copyFeedback" aria-live="polite"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-row"><span>© <span id="year"></span> Sergio Jiménez Macías</span><span>Computer Engineering · Software · Systems · Platforms · Data · Security</span></div></footer>
+
+  <script>
+    (() => {
+      'use strict';
+      const USER='seergiojm23';
+      const EMAIL='seergiiojm@gmail.com';
+      const $=s=>document.querySelector(s);
+      const $$=s=>[...document.querySelectorAll(s)];
+      $('#year').textContent=new Date().getFullYear();
+
+      // theme
+      const stored=localStorage.getItem('portfolio-theme');
+      if(stored) document.documentElement.dataset.theme=stored;
+      $('#themeBtn').addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='light'?'dark':'light';document.documentElement.dataset.theme=next;localStorage.setItem('portfolio-theme',next)});
+
+      // mobile navigation
+      $('#menuBtn').addEventListener('click',()=>{const m=$('#mobileMenu');m.classList.toggle('open');$('#menuBtn').setAttribute('aria-expanded',String(m.classList.contains('open')))});
+      $$('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{$('#mobileMenu').classList.remove('open');$('#menuBtn').setAttribute('aria-expanded','false')}));
+
+      // copy email
+      $('#copyEmail').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(EMAIL);$('#copyFeedback').textContent='Email copiado al portapapeles.';setTimeout(()=>$('#copyFeedback').textContent='',2200)}catch{$('#copyFeedback').textContent=EMAIL}});
+
+      // show CV button only when the asset exists on HTTP(S)
+      if(location.protocol.startsWith('http')){fetch('CV_Sergio_Jimenez_Macias.pdf',{method:'HEAD'}).then(r=>{if(r.ok)$('#cvButton').hidden=false}).catch(()=>{})}
+
+
+      const langColors={Python:'#4ea7ff',C:'#9aa8ff','C++':'#6c89ff',Java:'#e79b61',JavaScript:'#f1cf64',HTML:'#e26f53',CSS:'#7b7cf0',Shell:'#78d5a0'};
+      let repos=[];
+      const escapeHTML=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+      const ago=date=>{const d=Math.floor((Date.now()-new Date(date))/86400000);return d<1?'hoy':d===1?'ayer':d<30?`${d}d`:d<365?`${Math.floor(d/30)}m`:`${Math.floor(d/365)}a`};
+
+      const repoProfiles={
+        'Grupo11Rob':{kicker:'Robotics · Engineering coursework',description:'Repositorio de robótica estructurado por prácticas y entregables, con automatización de compilación mediante Makefile.',tags:['Robótica','Make','Version control']},
+        'seergiojm23.github.io':{kicker:'Portfolio · Front-end engineering',description:'Código fuente del portfolio técnico, con interfaz responsive, visualizaciones dinámicas e integración con GitHub REST API.',tags:['HTML','CSS','JavaScript','GitHub']}
+      };
+      function renderRepos(){
+        const q=$('#repoSearch').value.trim().toLowerCase(), lang=$('#repoLanguage').value, sort=$('#repoSort').value;
+        let list=repos.filter(r=>!r.fork);
+        if(q) list=list.filter(r=>(r.name+' '+(r.description||'')).toLowerCase().includes(q));
+        if(lang!=='all') list=list.filter(r=>r.language===lang);
+        list.sort((a,b)=>sort==='name'?a.name.localeCompare(b.name):new Date(b.updated_at)-new Date(a.updated_at));
+        $('#repoList').innerHTML=list.slice(0,10).map(r=>{const profile=repoProfiles[r.name]||{};const tags=profile.tags||[r.language||'Source code',r.default_branch?`branch: ${r.default_branch}`:'Git'];return `<a class="repo" href="${escapeHTML(r.html_url)}" target="_blank" rel="noopener noreferrer"><div><span class="repo-kicker">${escapeHTML(profile.kicker||'Repositorio público')}</span><b>${escapeHTML(r.name)}</b><p>${escapeHTML(profile.description||r.description||'Código fuente y documentación publicados en GitHub.')}</p><div class="repo-tags">${tags.filter(Boolean).map(t=>`<span class="repo-tag">${escapeHTML(t)}</span>`).join('')}</div></div><div class="repo-meta"><span><i class="dot" style="background:${langColors[r.language]||'#7f93a7'}"></i>${escapeHTML(r.language||'Git')}</span><span>${ago(r.updated_at)}</span><span class="repo-open">Source ↗</span></div></a>`}).join('')||'<div class="repo"><div><span class="repo-kicker">Repositorios</span><b>Sin resultados</b><p>Prueba con otro término o filtro.</p></div></div>';
+      }
+
+      function renderLanguages(list){
+        const counts={};list.filter(r=>!r.fork&&r.language).forEach(r=>counts[r.language]=(counts[r.language]||0)+1);
+        const rows=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,6), max=Math.max(...rows.map(x=>x[1]),1);
+        $('#languageBars').innerHTML=rows.length?rows.map(([name,n])=>`<div class="bar-row"><span>${escapeHTML(name)}</span><div class="bar"><i style="width:${Math.round(n/max*100)}%;background:${langColors[name]||'linear-gradient(90deg,var(--accent),var(--accent-2))'}"></i></div><span>${n}</span></div>`).join(''):'<span class="muted" style="font-size:.65rem">Sin lenguajes públicos disponibles.</span>';
+      }
+
+      async function loadGitHub(){
+        const started=performance.now();
+        try{
+          const [uR,rR]=await Promise.all([fetch(`https://api.github.com/users/${USER}`),fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`)]);
+          if(!uR.ok||!rR.ok)throw new Error('GitHub unavailable');
+          const [user,repoData]=await Promise.all([uR.json(),rR.json()]);
+          repos=repoData;
+          const publicRepos=repos.filter(r=>!r.fork),latency=Math.round(performance.now()-started),latest=publicRepos.length?[...publicRepos].sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at))[0]:null;
+          const langs=[...new Set(publicRepos.map(r=>r.language).filter(Boolean))].sort();
+          $('#ghName').textContent=user.name||'Sergio Jiménez Macías';
+          $('#ghLogin').textContent='@'+user.login;
+          $('#ghAvatar').src=user.avatar_url;
+          $('#heroStatus').textContent='ONLINE';
+          $('#heroLatency').textContent=latency+' ms';
+          $('#heroRepos').textContent=publicRepos.length;
+          $('#heroUpdated').textContent=latest?ago(latest.updated_at):'—';
+          $('#heroSync').textContent='github synced';
+          $('#ghRepoCount').textContent=publicRepos.length;
+          $('#ghLanguageCount').textContent=langs.length;
+          $('#ghLatestUpdate').textContent=latest?ago(latest.updated_at):'—';
+          $('#ghLatency').textContent=latency+' ms';
+          const sync=$('#syncState');sync.classList.add('ok');sync.querySelector('span').textContent=`GitHub conectado · ${latency} ms`;
+          renderLanguages(publicRepos);
+          $('#repoLanguage').innerHTML='<option value="all">Todos los lenguajes</option>'+langs.map(l=>`<option>${escapeHTML(l)}</option>`).join('');
+          $('#repoTools').hidden=publicRepos.length<5;
+          renderRepos();
+        }catch(err){
+          $('#heroSync').textContent='github unavailable';
+          $('#heroStatus').textContent='OFFLINE';
+          $('#heroLatency').textContent='—';
+          $('#heroRepos').textContent='—';
+          $('#heroUpdated').textContent='—';
+          $('#ghRepoCount').textContent='—';
+          $('#ghLanguageCount').textContent='—';
+          $('#ghLatestUpdate').textContent='—';
+          $('#ghLatency').textContent='—';
+          $('#syncState').querySelector('span').textContent='GitHub no disponible ahora mismo.';
+          $('#repoTools').hidden=true;
+          $('#repoList').innerHTML='<a class="repo" href="https://github.com/seergiojm23" target="_blank" rel="noopener noreferrer"><div><b>Abrir perfil de GitHub</b><p>No se pudo cargar la información de GitHub en este momento.</p></div><div class="repo-meta">↗</div></a>';
+          $('#languageBars').innerHTML='<span class="muted" style="font-size:.65rem">Datos no disponibles.</span>';
+        }
+      }
+      $('#repoSearch').addEventListener('input',renderRepos);$('#repoLanguage').addEventListener('change',renderRepos);$('#repoSort').addEventListener('change',renderRepos);loadGitHub();
+    })();
+  </script>
+</body>
+</html>
